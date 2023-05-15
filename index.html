@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gear sizing</title>
+    <link rel="stylesheet" type="text/css" href="/css/Engrenagens_Inch.css">
+</head>
+<body>
+
+    <div class="titulo">
+        <h1 class="h1">Engrenagens</h1>                                <!--Título da página-->
+    </div>
+    
+    <div class="split left"> 
+        <p1 class="p1">Estudo:</p1>
+        <div>
+            <button type="button" id="est-Geometrico" class="estudo e-bounce-effect" onclick="DadosdeEntrada('geometric','study')">Geométrico</button>
+        </div>
+        <div>
+            <button type="button" id="est-cinematico" class="estudo e-bounce-effect" onclick="DadosdeEntrada('dynamic kinematic','study')" disabled>Cinemático/Dinâmico</button>
+        </div>
+        <div>
+            <button type="button" id="est-tensoes" class="estudo e-bounce-effect" onclick="DadosdeEntrada('strain','study')" disabled>Tensões</button>
+        </div>
+    </div>
+
+    <div class="split right" id="study">
+    </div>
+
+    <script src="/js/Engrenagens_Inch.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+</html>

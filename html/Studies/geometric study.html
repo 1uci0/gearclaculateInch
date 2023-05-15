@@ -1,0 +1,57 @@
+<div class="DadosdeEntrada">
+    <p1>Dados de Entrada:</p1>
+</div>
+
+<div class="areaImput">
+    <div class="selectParameter">
+        <div class="tit1">
+            <p1 class="p1">Parâmetros de Entrada:</p1>
+        </div>
+        
+        <div class="geometricoC1">
+            <div class="bloco1">
+                <div>
+                    <label>
+                        <input class="butradio" title="número de dentes do pinhão" type="radio" name="coluna1" id="z1" value="z1">
+                        <label class="legendradio">z<sub>1</sub></label><br>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input class="butradio" title="diâmetro primitivo do pinhão" type="radio" name="coluna1" id="d1" value="d1">
+                        <label class="legendradio">d<sub>1</sub></label><br>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input class="butradio" title="relação de transmissão" onchange="checkParameter()" type="checkbox" id="i">
+                        <label class="legendradio">i</label><br>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input class="butradio" title="diâmetro primitivo da coroa" type="radio" name="coluna2" id="d2" value="d2">
+                        <label class="legendradio">d<sub>2</sub></label><br>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input class="butradio" title="número de dentes da coroa" type="radio" name="coluna2" id="z2" value="z2">
+                        <label class="legendradio">z<sub>2</sub></label><br>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="geometricoC2">
+            <div class="bloco2">
+                <div>
+                    <button type="button" class="confirmarP Cp-bounce-effect" id="ConfParameter" onclick="ConfParameter('geometric','parameter')">Confirmar Parâmetros</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="insertParameter" id="parameter">
+    </div>
+</div>

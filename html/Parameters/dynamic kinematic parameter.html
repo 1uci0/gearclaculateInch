@@ -1,0 +1,50 @@
+<div class="ImputParameter">
+    <div class="tit1">
+        <p1 class="p1">Insira os Parâmetros</p1>
+    </div>
+
+    <div class="parameters1">
+        <div class="Parameter1" style="display: none;">
+        </div>
+    </div>
+
+    <div class="parameters2">
+        <div class="Parameter2">
+            <div class="H">
+                <label>P<sub>trans</sub>:
+                <input class="dadosEnter1" type="number" name="H" id="H" min="0">
+                <select class="prmtr" style="text-align: left;" id="unidadeH">
+                    <option value="hp"> hp </option>
+                    <option value="cv"> cv </option>
+                </select>
+                </label>
+            </div>
+            <div class="N1">
+                <label>n<sub>1</sub>:
+                <input class="dadosEnter1" type="number" name="N1" id="N1" min="0">
+                </label>rpm
+            </div>
+            <div class="N2">
+                <label>n<sub>2</sub>:
+                <input class="dadosEnter1" type="number" name="N2" id="N2" min="0">
+                </label>rpm
+            </div>
+            <div class="T1">
+                <label>T<sub>1</sub>:
+                <input class="dadosEnter1" type="number" name="T1" id="T1" min="0">
+                </label>lbf∙in
+            </div>
+            <div class="T2">
+                <label>T<sub>2</sub>:
+                <input class="dadosEnter1" type="number" name="T2" id="T2" min="0">
+                </label>lbf∙in
+            </div>
+        </div>
+        <div>
+            <button type="button" id="Calcular" class="Calcular c-effect" onclick="Calcular('dynamic kinematic','result')">Calcular</button>
+        </div>
+    </div>
+</div>
+
+<div class="resultados" id="result">
+</div>

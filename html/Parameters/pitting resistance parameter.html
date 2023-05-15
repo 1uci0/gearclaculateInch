@@ -1,0 +1,111 @@
+<div class="pitting">
+    <div class="DadosdeEntradaStrain">
+        <p1>Insira os Parâmetros:</p1>
+    </div>
+    <div class="areaImput" style="border: none;">
+        <div class="pitting1">
+            <div class="pitting2">Tensão:
+                <div class="pitting4">
+                    <div class="pitting5"> Coeficiente elástico - C<sub>p</sub>
+                        <div style="margin-top: 3px; justify-content: space-evenly; display: flex">
+                            <div>
+                                <label> <i>E</i><sub>1</sub>:
+                                    <input title="módulo de elasticidade do pinhão" class="dadosEnter1" type="number" id="E1">
+                                </label>psi
+                            </div>
+                            <div>
+                                <label> <i>E</i><sub>2</sub>:
+                                    <input title="módulo de elasticidade da coroa" class="dadosEnter1" type="number" id="E2">
+                                </label>psi
+                            </div>
+                        </div>
+                        <div style="margin-top: 5px; justify-content: space-evenly; display: flex">
+                            <div style="margin-left: -22px;">
+                                <label> <i>ν</i><sub>1</sub>:
+                                    <input title="coeficiente de Poisson do pinhão" class="dadosEnter1" type="number" id="Poisson1">
+                                </label>
+                            </div>
+                            <div>
+                                <label> <i>ν</i><sub>2</sub>:
+                                    <input title="coeficiente de Poisson da coroa" class="dadosEnter1" type="number" id="Poisson2">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pitting3">Resistência:
+                <div class="pitting4">
+                    <div class="pitting5"> Parâmetros de Entrada:
+                        <div style="justify-content: space-evenly; display: flex">
+                            <div>
+                                <label>
+                                    <input class="butradio" title="número de ciclos" type="radio" name="resistence parameter" id="N" value="N" onclick="resistencia_flexao()" checked>
+                                    <label class="legendradio">N<br></label>
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input class="butradio" title="tempo de vida" type="radio" name="resistence parameter" id="L" value="L" onclick="resistencia_flexao()">
+                                    <label class="legendradio">L<sub>h</sub></label><br>
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input class="butradio" title="fator de segurança" type="radio" name="resistence parameter" id="S-f" value="S-f" onclick="resistencia_flexao()">
+                                    <label class="legendradio">S<sub>H</sub></label><br>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="parametrosdeEntrada" style="margin-top: 5px;">
+                            <div class="N">Número de ciclos - N
+                                <div>
+                                    <label>N:
+                                        <input class="dadosEnter1" type="number" id="N-ciclos" oninput="resistencia_flexao(this.value)" min="0" placeholder="2.3e7">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="T-vida">Tempo de vida - L<sub>h</sub>
+                                <div>
+                                    <label>L<sub>h</sub>(hr):
+                                        <input class="dadosEnter1" type="number" id="T-vida" oninput="resistencia_flexao(this.value)" min="0">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="S-F">Fator de segurança AGMA - S<sub>H</sub>
+                                <div>
+                                    <label>S<sub>H</sub>:
+                                        <input class="dadosEnter1" type="number" id="S-F" oninput="resistencia_flexao(this.value)" min="0">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pitting5">Fator de confiabilidade - K<sub>R</sub>
+                        <div class="Km">
+                            <div class="factorKm"> Confiabilidade:
+                                <label>
+                                    <select class="prmtr" id="Kr">
+                                        <option value="1.5"> 99.99% </option>
+                                        <option value="1.25"> 99.9% </option>
+                                        <option value="1"> 99% </option>
+                                        <option value="0.85"> 90% </option>
+                                        <option value="0.5"> 50% </option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top:-30px">
+        <button type="button" id="Calcular" class="Calcular c-effect" onclick="Calcular('pitting resistance','result')">Calcular</button>
+    </div>
+</div>
+<div>
+    <button class="ultimadiv">ultimadiv</button>
+</div>
+<div class="resultados" id="result" style="margin-top: -1%; right: 50.2%;">
+</div>

@@ -1,0 +1,57 @@
+<div class="DadosdeEntrada">
+    <p1>Dados de Entrada:</p1>
+</div>
+
+<div class="areaImput">
+    <div class="selectParameter">
+        <div class="tit1">
+            <p1 class="p1">Parâmetros de Entrada:</p1>
+        </div>
+        
+        <div class="geometricoC1">
+            <div class="bloco1">
+                <div>
+                    <label>
+                        <input class="butradio" title="rotação do pinhão" type="radio" name="coluna3" id="n1" value="n1">
+                        <label class="legendradio" style="margin-right: 10px;">n<sub>1</sub></label><br>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input class="butradio" title="rotação da coroa" type="radio" name="coluna3" id="n2" value="n2">
+                        <label class="legendradio">n<sub>2</sub></label><br>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input class="butradio" style="margin-top: 7px;" title="potência transmitida" onchange="checkParameter()" type="checkbox" id="h">
+                        <label class="legendradio" style="margin-top: 7px;">P<sub>trans</sub></label><br>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input class="butradio" title="torque do pinhão" type="radio" name="coluna4" id="t1" value="t1">
+                        <label class="legendradio">T<sub>1</sub></label><br>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input class="butradio" title="torque da coroa" type="radio" name="coluna4" id="t2" value="t2">
+                        <label class="legendradio">T<sub>2</sub></label><br>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="geometricoC2">
+            <div class="bloco2">
+                <div>
+                    <button type="button" class="confirmarP Cp-bounce-effect" id="ConfParameter" onclick="ConfParameter('dynamic kinematic','parameter')">Confirmar Parâmetros</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="insertParameter" id="parameter">
+    </div>
+</div>

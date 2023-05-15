@@ -1,0 +1,800 @@
+<div class="strain">
+    <div class="DadosdeEntradaStrain">
+        <p1>Insira os Parâmetros:</p1>
+    </div>
+    <div class="areaImput" style="border: none;">
+        <div class="strain1">
+            <div class="strain2">Tensão:
+                <div class="strain4">
+                    <div class="strain5"> Largura de face - F
+                        <div style="justify-content: space-evenly; display: flex">
+                            <div>
+                                <label> F<sub>1</sub>:
+                                    <input title="largura de face do pinhão" class="dadosEnter1" type="number" id="F1">
+                                </label>in
+                            </div>
+                            <div>
+                                <label> F<sub>2</sub>:
+                                    <input title="largura de face da coroa" class="dadosEnter1" type="number" id="F2">
+                                </label>in
+                            </div>
+                        </div>
+                    </div>
+                    <div class="strain5"> Qualidade do engrenamento - Q<sub>v</sub>:
+                        <label>
+                            <select class="prmtr" id="Qv">
+                                <option value="5"> 5 </option>
+                                <option value="6"> 6 </option>
+                                <option value="7"> 7 </option>
+                                <option value="8"> 8 </option>
+                                <option value="9"> 9 </option>
+                                <option value="10"> 10 </option>
+                                <option value="11"> 11 </option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="strain5"> Fator de sobrecarga - K<sub>o</sub>
+                        <table>
+                            <thead>
+                                <th></th>
+                                <th colspan="3">Máquina acionada</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: bold">Fonte de potência</td>
+                                    <td>uniforme</td>
+                                    <td>choque moderado</td>
+                                    <td>choque intenso</td>
+                                </tr>                    
+                                <tr>
+                                    <td>uniforme</td>
+                                    <td><input id="K01" type="radio" name="ko" value="1.00"></td>
+                                    <td><input id="K02" type="radio" name="ko" value="1.25"></td>
+                                    <td><input id="K03" type="radio" name="ko" value="1.75"></td>
+                                </tr>                  
+                                <tr>
+                                    <td>choque leve</td>
+                                    <td><input id="K04" type="radio" name="ko" value="1.25"></td>
+                                    <td><input id="K05" type="radio" name="ko" value="1.50"></td>
+                                    <td><input id="K06" type="radio" name="ko" value="2.00"></td>
+                                </tr>                  
+                                <tr>
+                                    <td>choque médio</td>
+                                    <td><input id="K07" type="radio" name="ko" value="1.50"></td>
+                                    <td><input id="K08" type="radio" name="ko" value="1.75"></td>
+                                    <td><input id="K09" type="radio" name="ko" value="2.25"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="strain5">Fator de distribuição de carga - K<sub>m</sub>
+                        <div class="Km">
+                            <div class="factorKm"> Perfil do dente:
+                                <label>
+                                    <select class="prmtr" id="perfilEngrenamento">
+                                        <option value="0.8"> Perfil com coroamento </option>
+                                        <option value="1"> Perfil sem coroamento </option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="factorKm">Condição do engrenamento:
+                                <label>
+                                    <select class="prmtr" id="condicaoEngrenamento">
+                                        <option value="1"> Engrenamento aberto </option>
+                                        <option value="2"> Unidade fechada, comercial </option>
+                                        <option value="3"> Unidade fechada, de precisão </option>
+                                        <option value="4"> Unidade fechada, extraprecisa </option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="factorKm">Ajuste do engrenamento:
+                                <label>
+                                    <select class="prmtr" id="AjusteEngrenamento">
+                                        <option value="0.8"> Ajuste na montagem </option>
+                                        <option value="0.8"> Ajuste por lapidação </option>
+                                        <option value="1"> Outras condições de ajustes </option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <div style="justify-content: space-evenly; display: flex; align-items: center;">
+                            <div>
+                                <canvas id="tela"></canvas>
+                            </div>
+                            <div>
+                                <label>S<sub>1</sub>:
+                                    <input class="dadosEnter4" type="number" id="S1" oninput="CpmFactor(this.value)" onkeyup="CpmFactor(this.value);" min="0" step="0.001" max="0.5">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="strain5"> Fator de espessura de borda - K<sub>B</sub>
+                        <div style="justify-content: space-evenly; display: flex">
+                            <div>
+                                <label> d<sub>o<sub>1</sub>:
+                                    <input title="diâmetro do eixo acoplado ao pinhão" class="dadosEnter1" type="number" id="do-1">
+                                </label>in
+                            </div>
+                            <div>
+                                <label> d<sub>o<sub>2</sub>:
+                                    <input title="diâmetro do eixo acoplado a coroa" class="dadosEnter1" type="number" id="do-2">
+                                </label>in
+                            </div>
+                        </div>
+                    </div>
+                    <div class="strain5">Ponto de Aplicação da carga
+                        <div class="Km">
+                            <div class="factorKm">
+                                <p1 title="loaded at tip">LAT</p1>
+                                <input type="checkbox" class="𝜱nw" id="𝜱nw">
+                                <label for="𝜱nw" class="𝜱nw-button"></label>
+                                <p1 title="load is at the highest point of single tooth contact">HPSTC</p1>                             
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="strain3">Resistência:
+                <div class="strain4">
+                    <div class="strain5"> Parâmetros de Entrada:
+                        <div style="justify-content: space-evenly; display: flex">
+                            <div>
+                                <label>
+                                    <input class="butradio" title="número de ciclos" type="radio" name="resistence parameter" id="N" value="N" onclick="resistencia_flexao()" checked>
+                                    <label class="legendradio">N<br></label>
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input class="butradio" title="tempo de vida" type="radio" name="resistence parameter" id="L" value="L" onclick="resistencia_flexao()">
+                                    <label class="legendradio">L<sub>h</sub></label><br>
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input class="butradio" title="fator de segurança" type="radio" name="resistence parameter" id="S-f" value="S-f" onclick="resistencia_flexao()">
+                                    <label class="legendradio">S<sub>F</sub></label><br>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="parametrosdeEntrada" style="margin-top: 5px;">
+                            <div class="N">Número de ciclos - N
+                                <div>
+                                    <label>N:
+                                        <input class="dadosEnter1" type="number" id="N-ciclos" oninput="resistencia_flexao(this.value)" min="0" placeholder="2.3e7">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="T-vida">Tempo de vida - L<sub>h</sub>
+                                <div>
+                                    <label>L<sub>h</sub>(hr):
+                                        <input class="dadosEnter1" type="number" id="T-vida" oninput="resistencia_flexao(this.value)" min="0">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="S-F">Fator de segurança AGMA - S<sub>F</sub>
+                                <div>
+                                    <label>S<sub>F</sub>:
+                                        <input class="dadosEnter1" type="number" id="S-F" oninput="resistencia_flexao(this.value)" min="0">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="strain5">Resistências do Material - S<sub>at</sub> e S<sub>ac</sub><br>
+                        <div>
+                            <button id="Materiale" type="button" class="mat m-effect" onclick="selecionarMateriais()">Selecionar Material</button>
+                        </div>
+                        <div>
+                            <div id="materialPinhaoEscolhido"></div>
+                            <div id="materialCoroaEscolhido"></div>
+                        </div>
+                        <div class="Materiais">
+                            <div class="Mat1">
+                                <div>
+                                    <button type="button" id="BP" class="fle f-effect" onclick="Pinhao()">Pinhão</button>
+                                </div>
+                                <div>
+                                    <button type="button" id="BC" class="fle f-effect" onclick="Coroa()" disabled>Coroa</button>
+                                </div>
+                                <div>
+                                    <button type="button" id="BC" class="fle f-effect" onclick="Sair()">Sair</button>
+                                </div>
+                            </div>
+                            <table id='MaterialPinhao'>
+                                <thead>
+                                    <th>Material</th>
+                                    <th>Classe AGMA</th>
+                                    <th>Designação do Material</th>
+                                    <th>Tratamento Térmico</th>
+                                    <th>Grau de dureza</th>
+                                    <th>Dureza Superficial Mínima</th>
+                                </thead>
+                                <tbody onclick="selecionarMaterialPinhao()">
+                                    <tr>
+                                        <td>Aço</td>                                    
+                                        <td>A1-A2</td>
+                                        <td></td>
+                                        <td>Endurecido por completo</td>
+                                        <td>Grau 1</td> 
+                                        <td>180 HB</td> 
+                                        <td style="display: none;">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Endurecido por completo</td> 
+                                        <td>Grau 2</td> 
+                                        <td>180 HB</td> 
+                                        <td style="display: none;">2</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Endurecido por chama ou indução Tipo A</td> 
+                                        <td>Grau 1</td> 
+                                        <td>50-55 HRC</td> 
+                                        <td style="display: none;">3</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Endurecido por chama ou indução Tipo A</td> 
+                                        <td>Grau 2</td> 
+                                        <td>50-55 HRC</td> 
+                                        <td style="display: none;">4</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Endurecido por chama ou indução Tipo B</td> 
+                                        <td>Grau 1</td> 
+                                        <td>50-55 HRC</td> 
+                                        <td style="display: none;">5</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Endurecido por chama ou indução Tipo B</td> 
+                                        <td> Grau 2</td> 
+                                        <td>50-55 HRC</td> 
+                                        <td style="display: none;">6</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Cementado por carbono e endurecimento superficial</td> 
+                                        <td>Grau 1</td> 
+                                        <td>55-64 HRC</td> 
+                                        <td style="display: none;">7</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Cementado por carbono e endurecimento superficial</td> 
+                                        <td>Grau 2</td> 
+                                        <td>55-64 HRC</td> 
+                                        <td style="display: none;">8</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Cementado por carbono e endurecimento superficial</td> 
+                                        <td>Grau 3</td> 
+                                        <td>55-64 HRC</td> 
+                                        <td style="display: none;">9</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>AISI 4140</td>
+                                        <td>Nitretado</td> 
+                                        <td></td> 
+                                        <td>84.6 HR15N</td> 
+                                        <td style="display: none;">10</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>AISI 4340</td>
+                                        <td>Nitretado</td> 
+                                        <td></td> 
+                                        <td>83.5 HR15N</td> 
+                                        <td style="display: none;">11</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Nitralloy 135 M</td>
+                                        <td>Nitretado</td> 
+                                        <td>Grau 1</td> 
+                                        <td>90.0 HR15N</td> 
+                                        <td style="display: none;">12</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Nitralloy 135 M</td>
+                                        <td>Nitretado</td> 
+                                        <td>Grau 2</td> 
+                                        <td>90.0 HR15N</td> 
+                                        <td style="display: none;">13</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Nitroliga 2.5% Cromo</td>
+                                        <td>Nitretado</td> 
+                                        <td>Grau 1</td> 
+                                        <td>87.5 HR15N</td> 
+                                        <td style="display: none;">14</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Nitroliga 2.5% Cromo</td>
+                                        <td>Nitretado</td> 
+                                        <td>Grau 2</td> 
+                                        <td>87.5 HR15N</td> 
+                                        <td style="display: none;">15</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Nitroliga 2.5% Cromo</td>
+                                        <td>Nitretado</td> 
+                                        <td>Grau 3</td> 
+                                        <td>87.5 HR15N</td> 
+                                        <td style="display: none;">16</td>
+                                    </tr>
+                                    <tr style="background-color:white">
+                                        <td>Ferro fundido</td>                                    
+                                        <td>20</td>
+                                        <td>Classe 20</td>
+                                        <td>Como fundido</td> 
+                                        <td></td> 
+                                        <td></td>
+                                        <td style="display: none;">17</td>
+                                    </tr>
+                                    <tr style="background-color:white">
+                                        <td></td>                                    
+                                        <td>30</td>
+                                        <td>Classe 30</td>
+                                        <td>Como fundido</td> 
+                                        <td></td>
+                                        <td>175 HB</td> 
+                                        <td style="display: none;">18</td>
+                                    </tr>
+                                    <tr style="background-color:white">
+                                        <td></td>                                    
+                                        <td>40</td>
+                                        <td>Classe 40</td>
+                                        <td>Como fundido</td> 
+                                        <td></td>
+                                        <td>200 HB</td> 
+                                        <td style="display: none;">19</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ferro nodular (dúctil)</td>                                    
+                                        <td>A-7-a</td>
+                                        <td>60-40-18</td>
+                                        <td>Recozido</td> 
+                                        <td></td>
+                                        <td>140 HB</td> 
+                                        <td style="display: none;">20</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>                                    
+                                        <td>A-7-c</td>
+                                        <td>80-55-06</td>
+                                        <td>Revenido e temperado</td> 
+                                        <td></td>
+                                        <td>180 HB</td> 
+                                        <td style="display: none;">21</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>                                    
+                                        <td>A-7-d</td>
+                                        <td>100-70-03</td>
+                                        <td>Revenido e temperado</td> 
+                                        <td></td>
+                                        <td>230 HB</td> 
+                                        <td style="display: none;">22</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>                                    
+                                        <td>A-7-e</td>
+                                        <td>120-90-02</td>
+                                        <td>Revenido e temperado</td> 
+                                        <td></td>
+                                        <td>230 HB</td> 
+                                        <td style="display: none;">23</td>
+                                    </tr>
+                                    <tr style="background-color:white">
+                                        <td>Ferro perlítico</td>                                    
+                                        <td>A-8-c</td>
+                                        <td>45007</td>
+                                        <td></td> 
+                                        <td></td>
+                                        <td>165 HB</td> 
+                                        <td style="display: none;">24</td>
+                                    </tr>
+                                    <tr style="background-color:white">
+                                        <td></td>                                    
+                                        <td>A-8-e</td>
+                                        <td>50005</td>
+                                        <td></td> 
+                                        <td></td>
+                                        <td>180 HB</td> 
+                                        <td style="display: none;">25</td>
+                                    </tr>
+                                    <tr style="background-color:white">
+                                        <td></td>                                    
+                                        <td>A-8-f</td>
+                                        <td>53007</td>
+                                        <td></td> 
+                                        <td></td>
+                                        <td>195 HB</td> 
+                                        <td style="display: none;">26</td>
+                                    </tr>
+                                    <tr style="background-color:white">
+                                        <td></td>                                    
+                                        <td>A-8-i</td>
+                                        <td>80002</td>
+                                        <td></td> 
+                                        <td></td>
+                                        <td>240 HB</td> 
+                                        <td style="display: none;">27</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bronze</td>                                    
+                                        <td>Bronze 2</td>
+                                        <td>AGMA 2C</td>
+                                        <td>Molde de areia</td> 
+                                        <td></td>
+                                        <td></td> 
+                                        <td style="display: none;">28</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-bottom-left-radius: 15px;"></td>                                    
+                                        <td>Al/Br 3</td>
+                                        <td>ASTM B-148 78 liga 954</td>
+                                        <td>Tratado termicamente</td> 
+                                        <td></td>
+                                        <td style="border-bottom-right-radius: 15px;"></td>
+                                        <td style="display: none;">29</td> 
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table id='MaterialCoroa'>
+                                <thead>
+                                    <th>Material</th>
+                                    <th>Classe AGMA</th>
+                                    <th>Designação do Material</th>
+                                    <th>Tratamento Térmico</th>
+                                    <th>Grau de dureza</th>
+                                    <th>Dureza Superficial Mínima</th>
+                                </thead>
+                                <tbody onclick="selecionarMaterialCoroa()">
+                                    <tr>
+                                        <td>Aço</td>                                    
+                                        <td>A1-A2</td>
+                                        <td></td>
+                                        <td>Endurecido por completo</td>
+                                        <td>Grau 1</td> 
+                                        <td>180 HB</td> 
+                                        <td style="display: none;">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Endurecido por completo</td> 
+                                        <td>Grau 2</td> 
+                                        <td>180 HB</td> 
+                                        <td style="display: none;">2</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Endurecido por chama ou indução Tipo A</td> 
+                                        <td>Grau 1</td> 
+                                        <td>50-55 HRC</td> 
+                                        <td style="display: none;">3</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Endurecido por chama ou indução Tipo A</td> 
+                                        <td>Grau 2</td> 
+                                        <td>50-55 HRC</td> 
+                                        <td style="display: none;">4</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Endurecido por chama ou indução Tipo B</td> 
+                                        <td>Grau 1</td> 
+                                        <td>50-55 HRC</td> 
+                                        <td style="display: none;">5</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Endurecido por chama ou indução Tipo B</td> 
+                                        <td> Grau 2</td> 
+                                        <td>50-55 HRC</td> 
+                                        <td style="display: none;">6</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Cementado por carbono e endurecimento superficial</td> 
+                                        <td>Grau 1</td> 
+                                        <td>55-64 HRC</td> 
+                                        <td style="display: none;">7</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Cementado por carbono e endurecimento superficial</td> 
+                                        <td>Grau 2</td> 
+                                        <td>55-64 HRC</td> 
+                                        <td style="display: none;">8</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Cementado por carbono e endurecimento superficial</td> 
+                                        <td>Grau 3</td> 
+                                        <td>55-64 HRC</td> 
+                                        <td style="display: none;">9</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>AISI 4140</td>
+                                        <td>Nitretado</td> 
+                                        <td></td> 
+                                        <td>84.6 HR15N</td> 
+                                        <td style="display: none;">10</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>AISI 4340</td>
+                                        <td>Nitretado</td> 
+                                        <td></td> 
+                                        <td>83.5 HR15N</td> 
+                                        <td style="display: none;">11</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Nitralloy 135 M</td>
+                                        <td>Nitretado</td> 
+                                        <td>Grau 1</td> 
+                                        <td>90.0 HR15N</td> 
+                                        <td style="display: none;">12</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Nitralloy 135 M</td>
+                                        <td>Nitretado</td> 
+                                        <td>Grau 2</td> 
+                                        <td>90.0 HR15N</td> 
+                                        <td style="display: none;">13</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Nitroliga 2.5% Cromo</td>
+                                        <td>Nitretado</td> 
+                                        <td>Grau 1</td> 
+                                        <td>87.5 HR15N</td> 
+                                        <td style="display: none;">14</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Nitroliga 2.5% Cromo</td>
+                                        <td>Nitretado</td> 
+                                        <td>Grau 2</td> 
+                                        <td>87.5 HR15N</td> 
+                                        <td style="display: none;">15</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Nitroliga 2.5% Cromo</td>
+                                        <td>Nitretado</td> 
+                                        <td>Grau 3</td> 
+                                        <td>87.5 HR15N</td> 
+                                        <td style="display: none;">16</td>
+                                    </tr>
+                                    <tr style="background-color:white">
+                                        <td>Ferro fundido</td>                                    
+                                        <td>20</td>
+                                        <td>Classe 20</td>
+                                        <td>Como fundido</td> 
+                                        <td></td> 
+                                        <td></td>
+                                        <td style="display: none;">17</td>
+                                    </tr>
+                                    <tr style="background-color:white">
+                                        <td></td>                                    
+                                        <td>30</td>
+                                        <td>Classe 30</td>
+                                        <td>Como fundido</td> 
+                                        <td></td>
+                                        <td>175 HB</td> 
+                                        <td style="display: none;">18</td>
+                                    </tr>
+                                    <tr style="background-color:white">
+                                        <td></td>                                    
+                                        <td>40</td>
+                                        <td>Classe 40</td>
+                                        <td>Como fundido</td> 
+                                        <td></td>
+                                        <td>200 HB</td> 
+                                        <td style="display: none;">19</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ferro nodular (dúctil)</td>                                    
+                                        <td>A-7-a</td>
+                                        <td>60-40-18</td>
+                                        <td>Recozido</td> 
+                                        <td></td>
+                                        <td>140 HB</td> 
+                                        <td style="display: none;">20</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>                                    
+                                        <td>A-7-c</td>
+                                        <td>80-55-06</td>
+                                        <td>Revenido e temperado</td> 
+                                        <td></td>
+                                        <td>180 HB</td> 
+                                        <td style="display: none;">21</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>                                    
+                                        <td>A-7-d</td>
+                                        <td>100-70-03</td>
+                                        <td>Revenido e temperado</td> 
+                                        <td></td>
+                                        <td>230 HB</td> 
+                                        <td style="display: none;">22</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>                                    
+                                        <td>A-7-e</td>
+                                        <td>120-90-02</td>
+                                        <td>Revenido e temperado</td> 
+                                        <td></td>
+                                        <td>230 HB</td> 
+                                        <td style="display: none;">23</td>
+                                    </tr>
+                                    <tr style="background-color:white">
+                                        <td>Ferro perlítico</td>                                    
+                                        <td>A-8-c</td>
+                                        <td>45007</td>
+                                        <td></td> 
+                                        <td></td>
+                                        <td>165 HB</td> 
+                                        <td style="display: none;">24</td>
+                                    </tr>
+                                    <tr style="background-color:white">
+                                        <td></td>                                    
+                                        <td>A-8-e</td>
+                                        <td>50005</td>
+                                        <td></td> 
+                                        <td></td>
+                                        <td>180 HB</td> 
+                                        <td style="display: none;">25</td>
+                                    </tr>
+                                    <tr style="background-color:white">
+                                        <td></td>                                    
+                                        <td>A-8-f</td>
+                                        <td>53007</td>
+                                        <td></td> 
+                                        <td></td>
+                                        <td>195 HB</td> 
+                                        <td style="display: none;">26</td>
+                                    </tr>
+                                    <tr style="background-color:white">
+                                        <td></td>                                    
+                                        <td>A-8-i</td>
+                                        <td>80002</td>
+                                        <td></td> 
+                                        <td></td>
+                                        <td>240 HB</td> 
+                                        <td style="display: none;">27</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bronze</td>                                    
+                                        <td>Bronze 2</td>
+                                        <td>AGMA 2C</td>
+                                        <td>Molde de areia</td> 
+                                        <td></td>
+                                        <td></td> 
+                                        <td style="display: none;">28</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-bottom-left-radius: 15px;"></td>                                    
+                                        <td>Al/Br 3</td>
+                                        <td>ASTM B-148 78 liga 954</td>
+                                        <td>Tratado termicamente</td> 
+                                        <td></td>
+                                        <td style="border-bottom-right-radius: 15px;"></td>
+                                        <td style="display: none;">29</td> 
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="strain6">
+                                <div class="strain7">
+                                    <div class="tit1">
+                                        <p1 class="p1">Dureza Brinell:</p1>
+                                    </div>
+                                    <div class="HB1">
+                                        <input type="range" id="hb-1" min="0" max="100" value="0" oninput="HB1()" disabled>
+                                        <div id="slider-value-1">0 HB</div>
+                                    </div>
+                                    <div class="HB2">
+                                        <input type="range" id="hb-2" min="0" max="100" value="0" oninput="HB2()" disabled>
+                                        <div id="slider-value-2">0 HB</div>
+                                    </div>
+                                    <div class="MatP">
+                                        <button type="button" id="matP" class="mat m-effect" onclick="MPselecionado()">Selecionar Material</button>
+                                    </div>
+                                    <div class="MatC">
+                                        <button type="button" id="matP" class="mat m-effect" onclick="MCselecionado()">Selecionar Material</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="strain5">Fator de confiabilidade - K<sub>R</sub>
+                        <div class="Km">
+                            <div class="factorKm"> Confiabilidade:
+                                <label>
+                                    <select class="prmtr" id="Kr">
+                                        <option value="1.5"> 99.99% </option>
+                                        <option value="1.25"> 99.9% </option>
+                                        <option value="1"> 99% </option>
+                                        <option value="0.85"> 90% </option>
+                                        <option value="0.7"> 50% </option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button type="button" id="Calcular" class="Calcular c-effect" onclick="Calcular('bending strength','result')">Calcular</button>
+    </div>
+</div>
+<div>
+    <button class="ultimadiv">ultimadiv</button>
+</div>
+<div class="resultados" id="result" style="margin-top: -1%; right: 50.2%;">
+</div>
